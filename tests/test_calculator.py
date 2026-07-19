@@ -67,4 +67,8 @@ def test_operator_precedence():
 def test_expression_with_spaces():
     assert calculator.calculate("10 + 8 * 5") == 50
 
+def test_negative_number_at_begining():
+    assert calculator.calculate("-5*8")  == -40
 
+def test_calculate_negatvive_number():
+    assert calculator.calculate("5*-8")  == -40
