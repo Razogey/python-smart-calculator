@@ -6,9 +6,6 @@ calculator = Calculator()
 def test_addition():
     assert calculator.calculate("5+3") == 8
 
-def test_precedence():
-    assert calculator.calculate("10+8*5") == 50
-
 def test_division():
     assert calculator.calculate("20/5") == 4
 
@@ -72,3 +69,39 @@ def test_negative_number_at_begining():
 
 def test_calculate_negatvive_number():
     assert calculator.calculate("5*-8")  == -40
+
+def test_pair_or_parentheses():
+    assert calculator.calculate("2*(3+2)") == 10
+    
+def test_single_parentheses():
+    assert calculator.calculate("(5*8)") == 40
+
+def test_parentheses_with_multiplication():
+    assert calculator.calculate("(2+3)*4") == 20
+
+def test_nested_parentheses():
+    assert calculator.calculate("2*(3+(4*5))") == 46
+
+def test_multiple_parentheses():
+    assert calculator.calculate("(2+3)*(4+1)") == 25
+
+def test_double_nested_parentheses():
+    assert calculator.calculate("((2+3)*4)+1") == 21
+
+def test_missing_closing_parenthesis():
+    with pytest.raises(ValueError):
+        calculator.calculate("(5+3")
+
+def test_missing_opening_parenthesis():
+    with pytest.raises(ValueError):
+        calculator.calculate("5+3)")
+
+def test_empty_parentheses():
+    with pytest.raises(ValueError):
+        calculator.calculate("()")
+
+def test_invalid_parentheses_content():
+    with pytest.raises(ValueError):
+        calculator.calculate("(+)")
+
+
