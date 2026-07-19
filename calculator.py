@@ -64,6 +64,21 @@ class Calculator:
                 i += 1
         return tokens[0]
     
+    def insert_multiplication(self, expression):
+        result = ""
+        for i, char in enumerate(expression):
+            result += char
+            
+            if i < len(expression) - 1:
+                next_char = expression[i+1]
+                
+            # check if there is number before ( or after ) and insert *
+                if (char.isdigit() and next_char == "(") or (char == ")" and next_char.isdigit()) or (char == ")" and next_char == "("):
+                    result += "*"
+        
+        expression = result
+        return expression
+    
     def validate_expression(self, expression: str):
         # Remove spaces from both start and end of expression
         expression = expression.strip()
@@ -109,6 +124,7 @@ class Calculator:
     def calculate(self, expression):
         expression = expression.replace(' ', '')
         self.validate_expression(expression)
+        expression = self.insert_multiplication(expression)
         expression = self.evaluate_parentheses(expression)
         tokens = self.tokenize(expression=expression)
         return self.evaluate(tokens)

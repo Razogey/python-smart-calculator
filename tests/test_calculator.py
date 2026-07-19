@@ -104,4 +104,13 @@ def test_invalid_parentheses_content():
     with pytest.raises(ValueError):
         calculator.calculate("(+)")
 
+def test_insert_multiplication():
+    assert calculator.calculate("3(2+3)") == 15
+    assert calculator.calculate("2(3+4)") == 14
+    assert calculator.calculate("(3+4)5") == 35
+    assert calculator.calculate("(2+3)(4+5)") == 45
+    assert calculator.calculate("2(3)(4)") == 24
+    assert calculator.calculate("(2+3)(4+5)(2)") == 90
+
+
 
