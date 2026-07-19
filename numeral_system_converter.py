@@ -24,7 +24,7 @@ class BaseConverter:
         return decimal_number
         
     
-    def from_decimal(self, number: int, base: int) -> str:  
+    def from_decimal(self, number: str, base: int) -> str:  
         self.validate_base(base)
         if number == 0:
             return "0"
@@ -36,3 +36,8 @@ class BaseConverter:
         result = "".join(result)
         return result
         
+    def convert(self, number: int, from_base: int, to_base: int) -> str:
+        decimal = self.to_decimal(number, from_base)
+        return self.from_decimal(decimal, to_base)
+        
+
