@@ -1,6 +1,6 @@
-# Calculator Engine
+# Python Smart Calculator
 
-A Python calculator engine that supports arithmetic expression evaluation and numeral system conversion.
+A Python smart calculator that supports arithmetic expression evaluation and numeral system conversion.
 
 ## Features
 
@@ -16,6 +16,14 @@ A Python calculator engine that supports arithmetic expression evaluation and nu
   - Decimal
   - Hexadecimal
 - Unit tests with Pytest
+
+## Calculator Engine
+
+The calculator engine is responsible for:
+- Tokenizing expressions
+- Validating expressions
+- Evaluating arithmetic operations
+- Supporting parentheses and negative numbers
 
 ## Project Structure
 
