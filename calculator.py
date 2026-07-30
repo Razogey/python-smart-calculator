@@ -1,6 +1,6 @@
 class Calculator:
     OPERATORS  = "+-*/"
-    VALID_CHARS = "0123456789+-*/() "
+    VALID_CHARS = "0123456789+-*/() ."
 
     def tokenize(self, expression):
         tokens = []
@@ -10,23 +10,24 @@ class Calculator:
         for char in expression:
             if char.isspace():
                 continue
-            if char.isdigit():
+            if char.isdigit() or char == ".":
                 number += char
                 expect_minus = False
             elif char in self.OPERATORS:
                 if char == "-" and expect_minus:
                     number += char
                 else:
-                    tokens.append(int(number))
+                    if number:
+                        tokens.append(float(number) if "." in number else int(number))
                     tokens.append(char)
                     number = ""
                     expect_minus = True
         
-        tokens.append(int(number))
+        if number:
+            tokens.append(float(number) if "." in number else int(number))
         return tokens
     
     def evaluate_parentheses(self, expression):
-        # 10+2*(4/2+3*2)
         while ")" in expression:
             close = expression.find(")")
             open = expression.rfind("(", 0, close)

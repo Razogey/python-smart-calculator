@@ -111,6 +111,27 @@ def test_insert_multiplication():
     assert calculator.calculate("(2+3)(4+5)") == 45
     assert calculator.calculate("2(3)(4)") == 24
     assert calculator.calculate("(2+3)(4+5)(2)") == 90
+    
+def test_decimal_numbers():
+    assert calculator.calculate("10.5+2") == 12.5
+
+    assert calculator.calculate("5.5*2") == 11
+
+    assert calculator.calculate("10.5-3.2") == 7.3
+
+    assert calculator.calculate("5.5/2") == 2.75
+
+    assert calculator.calculate("2.5*(4+2)") == 15
+    
+def test_wrong_decimal_inputs():
+    with pytest.raises(ValueError):
+        calculator.calculate("10..5+2")
+
+    with pytest.raises(ValueError):
+        calculator.calculate("5.2.3")
+
+    with pytest.raises(ValueError):
+        calculator.calculate("..5")
 
 
 
