@@ -123,6 +123,49 @@ def test_decimal_numbers():
 
     assert calculator.calculate("2.5*(4+2)") == 15
     
+def test_decimal_addition():
+    assert calculator.calculate("10.5+2.5") == 13.0
+
+
+def test_decimal_subtraction():
+    assert calculator.calculate("10.5-3.2") == 7.3
+
+
+def test_decimal_multiplication():
+    assert calculator.calculate("2.5*4") == 10.0
+
+
+def test_decimal_division():
+    assert calculator.calculate("5.5/2") == 2.75
+
+
+def test_decimal_with_parentheses():
+    assert calculator.calculate("2*(3.5+1.5)") == 10.0
+
+
+def test_negative_decimal():
+    assert calculator.calculate("-2.5*4") == -10.0
+
+
+def test_invalid_multiple_decimal_points():
+    with pytest.raises(ValueError):
+        calculator.calculate("10.5.3")
+
+
+def test_invalid_consecutive_decimal_points():
+    with pytest.raises(ValueError):
+        calculator.calculate("10..5")
+
+
+def test_invalid_decimal_only():
+    with pytest.raises(ValueError):
+        calculator.calculate(".")
+
+
+def test_invalid_negative_decimal():
+    with pytest.raises(ValueError):
+        calculator.calculate("-.")
+    
 def test_wrong_decimal_inputs():
     with pytest.raises(ValueError):
         calculator.calculate("10..5+2")
@@ -132,6 +175,16 @@ def test_wrong_decimal_inputs():
 
     with pytest.raises(ValueError):
         calculator.calculate("..5")
+        
+def test_decimal_implicit_multiplication():
+    assert calculator.calculate("2.3(4+2)") == pytest.approx(13.8)
+    assert calculator.calculate("2.5(4)") == 10.0
+    assert calculator.calculate("(2.5)4") == 10.0
+    assert calculator.calculate("(2.5)(4)") == 10.0
+    assert calculator.calculate("2(3.5)") == 7.0
+    
+def test_decimal_between_parentheses():
+    assert calculator.calculate("(2.5)(4)") == 10.0
 
 
 

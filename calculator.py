@@ -96,7 +96,7 @@ class Calculator:
         if expression[-1] in self.OPERATORS:
             raise ValueError("Expression cannot end with an operator.")
         
-        # check if expression only include 0123456789+-*/() 
+        # check if expression only include 0123456789+-*/() .
         for char in expression:
             if char not in self.VALID_CHARS:
                 raise ValueError(f"Invalid character: {char}")
@@ -121,6 +121,21 @@ class Calculator:
             if (expression[i] in self.OPERATORS and expression[i + 1] in self.OPERATORS):
                 if not (expression[i+1] == "-" and expression[i] != "-"):
                     raise ValueError("Two consecutive operators are not allowed.")
+            
+        number = ""
+        for char in expression:
+            if char.isdigit() or char == ".":
+                number += char
+            
+            else:
+                if number:
+                    if number.count(".") > 1:
+                        raise ValueError("Invalid decimal number.")
+                    number = ""
+                        
+            
+        if number and number.count(".") > 1:
+            raise ValueError("Invalid decimal number.")
     
     def calculate(self, expression):
         expression = expression.replace(' ', '')
