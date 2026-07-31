@@ -2,7 +2,6 @@
 
 A Python smart calculator that supports arithmetic expression evaluation and numeral system conversion.
 A smart calculator built with Python that supports arithmetic expression evaluation and numeral system conversion. The project focuses on clean architecture, input validation, and unit testing.
->>>>>>> da3e305 (Update README file)
 
 ## Features
 
