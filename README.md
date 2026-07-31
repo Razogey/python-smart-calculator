@@ -84,9 +84,7 @@ python -m pytest
 - Flet graphical user interface (GUI)
 - Scientific calculator functions
 - Calculation history
-<<<<<<< HEAD
 - Scientific functions
-=======
 - Memory operations
 - Support for additional mathematical operators
->>>>>>> da3e305 (Update README file)
+
