@@ -6,6 +6,7 @@ A smart calculator built with Python that supports arithmetic expression evaluat
 ## Features
 
 ### Calculator Engine
+
 - Evaluate arithmetic expressions
 - Operator precedence (`*` and `/` before `+` and `-`)
 - Parentheses support (including nested parentheses)
@@ -17,6 +18,7 @@ A smart calculator built with Python that supports arithmetic expression evaluat
   - `2.5(4+2)`
 
 ### Expression Validation
+
 - Rejects empty expressions
 - Detects invalid characters
 - Detects consecutive operators
@@ -26,6 +28,7 @@ A smart calculator built with Python that supports arithmetic expression evaluat
 - Prevents division by zero
 
 ### Numeral System Converter
+
 - Binary ↔ Decimal
 - Octal ↔ Decimal
 - Hexadecimal ↔ Decimal
@@ -36,6 +39,7 @@ A smart calculator built with Python that supports arithmetic expression evaluat
 The project includes comprehensive unit tests using **pytest**.
 
 Current test coverage includes:
+
 - Arithmetic operations
 - Operator precedence
 - Parentheses
@@ -52,9 +56,10 @@ Current test coverage includes:
 - Pytest
 - Git & GitHub
 
-## Calculator Engine
+## Calculator Engine Content
 
 The calculator engine is responsible for:
+
 - Tokenizing expressions
 - Validating expressions
 - Evaluating arithmetic operations
@@ -62,7 +67,7 @@ The calculator engine is responsible for:
 
 ## Project Structure
 
-```
+``` python
 .
 ├── calculator.py
 ├── numeral_system_converter.py
@@ -87,4 +92,3 @@ python -m pytest
 - Scientific functions
 - Memory operations
 - Support for additional mathematical operators
-
